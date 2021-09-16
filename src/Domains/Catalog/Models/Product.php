@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
 class Product extends Model
@@ -32,6 +33,7 @@ class Product extends Model
 
     protected $casts = [
         'active' => 'boolean',
+        'vat' => 'boolean',
     ];
 
     public function category(): BelongsTo
@@ -47,6 +49,14 @@ class Product extends Model
         return $this->belongsTo(
             related: Range::class,
             foreignKey: 'range_id',
+        );
+    }
+
+    public function variants(): HasMany
+    {
+        return $this->hasMany(
+            related: Variant::class,
+            foreignKey: 'product_id',
         );
     }
 

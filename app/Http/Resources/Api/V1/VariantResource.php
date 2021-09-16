@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace {{ namespace }};
+namespace App\Http\Resources\Api\V1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class {{ class }} extends JsonResource
+class VariantResource extends JsonResource
 {
     public function toArray($request): array
     {

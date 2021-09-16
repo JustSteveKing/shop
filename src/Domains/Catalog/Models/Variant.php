@@ -8,6 +8,7 @@ use Database\Factories\VariantFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
 class Variant extends Model
@@ -33,6 +34,14 @@ class Variant extends Model
         'active' => 'boolean',
         'shippable' => 'boolean',
     ];
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(
+            related: Product::class,
+            foreignKey: 'product_id',
+        );
+    }
 
     protected static function newFactory(): Factory
     {
