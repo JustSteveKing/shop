@@ -8,6 +8,7 @@
         "php": "^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "juststeveking/laravel-key-factory": "^1.0",
         "juststeveking/laravel-postcodes": "^1.5",
         "juststeveking/laravel-transporter": "^0.8.0",
         "laravel/framework": "^8.54",

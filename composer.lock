@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ef5ec0b4bcf3845b27533e0fb52fa3f",
+    "content-hash": "467b0da7844307f9c9e19ca7dc8d28a0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -927,6 +927,77 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "juststeveking/laravel-key-factory",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JustSteveKing/laravel-key-factory.git",
+                "reference": "5a2210e79f7b0c53f0d79fa3bd05c1a2be730d8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JustSteveKing/laravel-key-factory/zipball/5a2210e79f7b0c53f0d79fa3bd05c1a2be730d8c",
+                "reference": "5a2210e79f7b0c53f0d79fa3bd05c1a2be730d8c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.37",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.4.3"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.2",
+                "nunomaduro/collision": "^5.3",
+                "orchestra/testbench": "^6.15",
+                "phpunit/phpunit": "^9.3",
+                "spatie/laravel-ray": "^1.9",
+                "vimeo/psalm": "^4.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JustSteveKing\\KeyFactory\\KeyFactoryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JustSteveKing\\KeyFactory\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve McDougall",
+                    "email": "juststevemcd@gmail.com",
+                    "homepage": "https://www.juststeveking.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple package to generate Eloquent Model Keys",
+            "homepage": "https://github.com/juststeveking/laravel-key-factory",
+            "keywords": [
+                "JustSteveKing",
+                "laravel",
+                "laravel-key-factory"
+            ],
+            "support": {
+                "issues": "https://github.com/JustSteveKing/laravel-key-factory/issues",
+                "source": "https://github.com/JustSteveKing/laravel-key-factory/tree/1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/JustSteveKing",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-07-05T10:15:05+00:00"
         },
         {
             "name": "juststeveking/laravel-postcodes",
