@@ -28,8 +28,8 @@ return new class extends Migration
             // json columns
 
             // relationships
-            $table->foreignId('category_id')->index()->constrained();
-            $table->foreignId('range_id')->nullable()->index()->constrained();
+            $table->foreignId('category_id')->nullable()->index()->constrained()->nullOnDelete();
+            $table->foreignId('range_id')->nullable()->nullable()->index()->constrained()->nullOnDelete();
 
             // date stamps
             $table->timestamps();
