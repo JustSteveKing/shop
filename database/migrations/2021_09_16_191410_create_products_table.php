@@ -29,7 +29,7 @@ return new class extends Migration
 
             // relationships
             $table->foreignId('category_id')->nullable()->index()->constrained()->nullOnDelete();
-            $table->foreignId('range_id')->nullable()->nullable()->index()->constrained()->nullOnDelete();
+            $table->foreignId('range_id')->nullable()->index()->constrained()->nullOnDelete();
 
             // date stamps
             $table->timestamps();
