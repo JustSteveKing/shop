@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "spatie/enum": "^3.9",
         "spatie/laravel-enum": "^2.5",
+        "spatie/laravel-event-sourcing": "^5.0",
         "spatie/laravel-query-builder": "^3.6"
     },
     "require-dev": {
