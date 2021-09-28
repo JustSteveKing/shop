@@ -37,7 +37,7 @@ it('returns a cart for a logged in user', function () {
     );
 });
 
-it('returns a not found status when a guest tries to retrieve their carts', function () {
+it('returns a no content status when a guest tries to retrieve their carts', function () {
     get(
         uri: route('api:v1:carts:index')
     )->assertStatus(
