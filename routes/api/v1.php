@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -56,5 +56,4 @@ Route::prefix('carts')->as('carts:')->group(function () {
 //     * Delete Product
 //     */
 //    Route::delete('{cart}/products/{cartItem}', App\Http\Controllers\Api\V1\Carts\Products\DeleteController::class)->name('products:delete');
-
 });

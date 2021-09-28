@@ -17,7 +17,8 @@ it('creates a cart for an unauthenticated user', function () {
         uri: route('api:v1:carts:store'),
     )->assertStatus(
         status: Http::CREATED,
-    )->assertJson(fn (AssertableJson $json) =>
+    )->assertJson(
+        fn (AssertableJson $json) =>
         $json
             ->where('type', 'cart')
             ->where('attributes.status', CartStatus::pending()->label)
