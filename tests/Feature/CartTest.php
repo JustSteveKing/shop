@@ -12,19 +12,18 @@ use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
-it('creates a cart for an unauthenticated user', function () {
-    post(
-        uri: route('api:v1:carts:store'),
-    )->assertStatus(
-        status: Http::CREATED,
-    )->assertJson(
-        fn (AssertableJson $json) =>
-        $json
-            ->where('type', 'cart')
-            ->where('attributes.status', CartStatus::pending()->label)
-            ->etc()
-    );
-});
+it('creates a cart for an unauthenticated user')
+->post(
+    uri: fn() => route('api:v1:carts:store'),
+)->assertStatus(
+    status: Http::CREATED,
+)->assertJson(
+    fn (AssertableJson $json) =>
+    $json
+        ->where('type', 'cart')
+        ->where('attributes.status', CartStatus::pending()->label)
+        ->etc()
+);
 
 it('returns a cart for a logged in user', function () {
     $cart = Cart::factory()->create();
@@ -38,13 +37,12 @@ it('returns a cart for a logged in user', function () {
     );
 });
 
-it('returns a no content status when a guest tries to retrieve their carts', function () {
-    get(
-        uri: route('api:v1:carts:index')
-    )->assertStatus(
-        status: Http::NO_CONTENT,
-    );
-});
+it('returns a no content status when a guest tries to retrieve their carts')
+->get(
+    uri: fn() => route('api:v1:carts:index'),
+)->assertStatus(
+    status: Http::NO_CONTENT,
+);
 
 it('can add a new product to a cart', function () {
     expect(EloquentStoredEvent::query()->get())->toHaveCount(0);
