@@ -36,7 +36,7 @@ class Location extends Model
         );
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\LocationFactory
     {
         return LocationFactory::new();
     }

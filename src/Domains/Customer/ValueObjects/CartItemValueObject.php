@@ -10,11 +10,6 @@ namespace Domains\Customer\ValueObjects;
  */
 class CartItemValueObject
 {
-    /**
-     * @param int $quantity
-     * @param int $purchasableId
-     * @param string $purchasableType
-     */
     public function __construct(
         public int $quantity,
         public int $purchasableId,

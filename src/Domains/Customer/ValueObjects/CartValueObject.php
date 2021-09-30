@@ -10,10 +10,6 @@ namespace Domains\Customer\ValueObjects;
  */
 class CartValueObject
 {
-    /**
-     * @param string $status
-     * @param int|null $userId
-     */
     public function __construct(
         public string $status,
         public null|int $userId,

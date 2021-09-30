@@ -42,7 +42,7 @@ class OrderLine extends Model
         return $this->morphTo();
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\OrderLineFactory
     {
         return OrderLineFactory::new();
     }

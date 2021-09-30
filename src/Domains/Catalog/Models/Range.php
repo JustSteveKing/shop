@@ -39,14 +39,14 @@ class Range extends Model
         );
     }
 
-    public function newEloquentBuilder($query): Builder
+    public function newEloquentBuilder($query): \Domains\Catalog\Models\Builders\RangeBuilder
     {
         return new RangeBuilder(
             query: $query,
         );
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\RangeFactory
     {
         return RangeFactory::new();
     }

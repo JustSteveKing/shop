@@ -28,7 +28,7 @@ class Coupon extends Model
         'active' => 'boolean',
     ];
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\CouponFactory
     {
         return CouponFactory::new();
     }

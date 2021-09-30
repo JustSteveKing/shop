@@ -77,7 +77,7 @@ class User extends Authenticatable
         );
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\UserFactory
     {
         return UserFactory::new();
     }

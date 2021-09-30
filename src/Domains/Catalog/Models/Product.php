@@ -60,14 +60,14 @@ class Product extends Model
         );
     }
 
-    public function newEloquentBuilder($query): Builder
+    public function newEloquentBuilder($query): \Domains\Catalog\Models\Builders\ProductBuilder
     {
         return new ProductBuilder(
             query: $query,
         );
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\ProductFactory
     {
         return ProductFactory::new();
     }

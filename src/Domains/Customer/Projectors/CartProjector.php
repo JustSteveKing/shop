@@ -23,6 +23,7 @@ class CartProjector extends Projector
         );
 
         $cart->items()->create([
+            'quantity' => 1,
             'purchasable_id' => $event->productID,
             'purchasable_type' => $event->type,
         ]);

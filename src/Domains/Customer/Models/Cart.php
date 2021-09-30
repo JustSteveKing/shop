@@ -53,15 +53,13 @@ class  Cart extends Model
 
     /**
      * Get the prunable model query.
-     *
-     * @return Builder
      */
     public function prunable(): Builder
     {
         return static::query()->where('created_at', '<=', now()->subMonth());
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\CartFactory
     {
         return CartFactory::new();
     }

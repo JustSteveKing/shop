@@ -14,11 +14,9 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * @param Closure|string $uri
-     * @param array $headers
      *
-     * @return TestResponse
      */
-    public function get($uri, array $headers = [])
+    public function get($uri, array $headers = []): \Illuminate\Testing\TestResponse
     {
         return parent::get(
             uri: value(value: $uri),
@@ -28,14 +26,24 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * @param Closure|string $uri
-     * @param array $data
-     * @param array $headers
      *
-     * @return TestResponse
      */
-    public function post($uri, array $data = [], array $headers = [])
+    public function post($uri, array $data = [], array $headers = []): \Illuminate\Testing\TestResponse
     {
         return parent::post(
+            uri: value(value: $uri),
+            data: $data,
+            headers: $headers,
+        );
+    }
+
+    /**
+     * @param Closure|string $uri
+     *
+     */
+    public function patch($uri, array $data = [], array $headers = []): \Illuminate\Testing\TestResponse
+    {
+        return parent::patch(
             uri: value(value: $uri),
             data: $data,
             headers: $headers,

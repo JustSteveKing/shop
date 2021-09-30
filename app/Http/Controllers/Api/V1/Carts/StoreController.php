@@ -15,10 +15,6 @@ use JustSteveKing\StatusCode\Http;
 
 class StoreController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function __invoke(Request $request): JsonResponse
     {
         $cart = CreateCart::handle(

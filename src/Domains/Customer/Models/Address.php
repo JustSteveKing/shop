@@ -42,7 +42,7 @@ class Address extends Model
         );
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\AddressFactory
     {
         return AddressFactory::new();
     }

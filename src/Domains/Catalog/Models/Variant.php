@@ -62,7 +62,7 @@ class  Variant extends Model
         );
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\VariantFactory
     {
         return VariantFactory::new();
     }

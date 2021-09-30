@@ -25,6 +25,10 @@ class CartItem extends Model
         'cart_id',
     ];
 
+    protected $casts = [
+        'quantity' => 'int',
+    ];
+
     public function cart(): BelongsTo
     {
         return $this->belongsTo(
@@ -38,7 +42,7 @@ class CartItem extends Model
         return $this->morphTo();
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\CartItemFactory
     {
         return CartItemFactory::new();
     }
