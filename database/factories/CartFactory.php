@@ -16,15 +16,13 @@ class CartFactory extends Factory
 
     public function definition(): array
     {
-        $useCoupon = $this->faker->boolean();
-
         return [
             'status' => Arr::random(
                 array: CartStatus::toLabels(),
             ),
-            'coupon' => $useCoupon ? $this->faker->imei() : null,
+            'coupon' => null,
             'total' => $this->faker->numberBetween(10000, 100000),
-            'reduction' => $useCoupon ? $this->faker->numberBetween(250, 2500) : 0,
+            'reduction' => 0,
             'user_id' => User::factory()->create(),
         ];
     }
