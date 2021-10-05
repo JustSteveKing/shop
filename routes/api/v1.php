@@ -63,4 +63,20 @@ Route::prefix('carts')->as('carts:')->group(function () {
      */
     Route::post('{cart:uuid}/coupons', App\Http\Controllers\Api\V1\Carts\Coupons\StoreController::class)->name('coupons:store');
 
+    /**
+     * Remove a coupon from our cart
+     */
+    Route::delete('{cart:uuid}/coupons/{uuid}', App\Http\Controllers\Api\V1\Carts\Coupons\DeleteController::class)->name('coupons:delete');
+});
+
+
+/**
+ * Order Routes
+ */
+Route::prefix('orders')->as('orders:')->group(function () {
+
+    /**
+     * Turn a Cart into an Order
+     */
+    Route::post('/', App\Http\Controllers\Api\V1\Orders\StoreController::class)->name('store');
 });

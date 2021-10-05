@@ -6,7 +6,6 @@ namespace Domains\Customer\Models;
 
 use Database\Factories\CartItemFactory;
 use Domains\Shared\Models\Concerns\HasUuid;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,7 +41,7 @@ class CartItem extends Model
         return $this->morphTo();
     }
 
-    protected static function newFactory(): \Database\Factories\CartItemFactory
+    protected static function newFactory(): CartItemFactory
     {
         return CartItemFactory::new();
     }

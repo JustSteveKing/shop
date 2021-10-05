@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use Domains\Customer\Models\Cart;
+use Domains\Customer\Models\Coupon;
 use Domains\Customer\Models\User;
 use Domains\Customer\States\Statuses\CartStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
