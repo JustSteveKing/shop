@@ -43,26 +43,26 @@ class CartProjector extends Projector
             id: $event->cartID,
         );
 
-        $items = CartItem::query()
-            ->with(['purchasable'])
-            ->get();
+        $item = CartItem::query()->where(
+                column: 'id',
+                operator: '=',
+                value: $event->purchasableID
+            )->where(
+                column: 'purchasable_type',
+                operator: '=',
+                value: $event->type
+            )->with(['purchasable'])
+            ->first();
 
-        $item = $items->filter(fn(Model $item) =>
-                $item->id === $event->purchasableID
-            )->first();
-
-        if ($items->count() === 1) {
+        if ($cart->items()->count() === 1) {
             $cart->update([
                 'total' => 0,
             ]);
         } else {
-
             $cart->update([
-                'total' => ($cart->total - ($item->quantity * $item->purchasable->retail))
+                'total' => ($cart->total - ($item->quantity * $item->purchasable->retail)),
             ]);
         }
-
-
 
         $cart
             ->items()
