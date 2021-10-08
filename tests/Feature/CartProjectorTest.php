@@ -4,6 +4,7 @@ use Domains\Customer\Events\IncreaseCartQuantity;
 use Domains\Customer\Events\ProductWasAddedToCart;
 use Domains\Customer\Events\ProductWasRemovedFromCart;
 use Domains\Customer\Models\Cart;
+use Domains\Customer\Models\CartItem;
 use Domains\Customer\Projectors\CartProjector;
 
 beforeEach(fn() => $this->projector = new CartProjector());
@@ -62,6 +63,36 @@ it('can remove a product from the cart', function (ProductWasRemovedFromCart $ev
 
 })->with('RemovedFromCart');
 
+
+it('can remove a product with quantity > 1 from the cart', function (Cart $cart) {
+    expect($this->projector)->toBeInstanceOf(CartProjector::class);
+
+    $cart->load(['items.purchasable']);
+
+    /** @var CartItem $item */
+    $item = $cart->items->first();
+    $expectedTotal = $cart->total - ($item->quantity * $item->purchasable->retail);
+
+    expect($cart)
+        ->items->count()->toBe(3)
+        ->items->first()->quantity->toBe(2);
+
+    $this->projector->onProductWasRemovedFromCart(
+        event: new ProductWasRemovedFromCart(
+            purchasableID: $item->id,
+            cartID: $cart->id,
+            type: 'variant',
+        ),
+    );
+
+    $cart->refresh();
+
+    expect($cart)
+        ->items->count()->toBe(2)
+        ->total->toBe($expectedTotal);
+
+})->with('CartWith3Items');
+
 it('can increase the quantity of an item in the cart', function (IncreaseCartQuantity $event) {
     expect($this->projector)->toBeInstanceOf(CartProjector::class);
 
@@ -72,5 +103,5 @@ it('can increase the quantity of an item in the cart', function (IncreaseCartQua
     $this->projector->onIncreaseCartQuantity(
         event: $event,
     );
-    
+
 })->with('IncreaseCartQuantity');

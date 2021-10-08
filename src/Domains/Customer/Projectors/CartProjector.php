@@ -56,8 +56,9 @@ class CartProjector extends Projector
                 'total' => 0,
             ]);
         } else {
+
             $cart->update([
-                'total' => ($cart->total - $item->purchasable->retail)
+                'total' => ($cart->total - ($item->quantity * $item->purchasable->retail))
             ]);
         }
 
