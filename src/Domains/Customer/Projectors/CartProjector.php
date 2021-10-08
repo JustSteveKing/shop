@@ -74,9 +74,11 @@ class CartProjector extends Projector
     {
         $item = CartItem::query()->where(
             column: 'cart_id',
+            operator: '=',
             value: $event->cartID,
         )->where(
             column: 'id',
+            operator: '=',
             value: $event->cartItemID,
         )->first();
 
@@ -89,9 +91,11 @@ class CartProjector extends Projector
     {
         $item = CartItem::query()->where(
             column: 'cart_id',
+            operator: '=',
             value: $event->cartID,
         )->where(
             column: 'id',
+            operator: '=',
             value: $event->cartItemID,
         )->first();
 
@@ -117,8 +121,9 @@ class CartProjector extends Projector
         $coupon = Coupon::query()->where('code', $event->code)->first();
 
         Cart::query()->where(
-            'id',
-            $event->cartID,
+            column:'id',
+            operator: '=',
+            value: $event->cartID,
         )->update([
             'coupon' => $coupon->code,
             'reduction' => $coupon->reduction,
