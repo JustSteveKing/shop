@@ -72,5 +72,5 @@ it('can increase the quantity of an item in the cart', function (IncreaseCartQua
     $this->projector->onIncreaseCartQuantity(
         event: $event,
     );
-    
+
 })->with('IncreaseCartQuantity');
