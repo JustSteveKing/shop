@@ -43,25 +43,26 @@ class CartProjector extends Projector
             id: $event->cartID,
         );
 
-        $items = CartItem::query()
-            ->with(['purchasable'])
-            ->get();
+        $item = CartItem::query()->where(
+                column: 'id',
+                operator: '=',
+                value: $event->purchasableID
+            )->where(
+                column: 'purchasable_type',
+                operator: '=',
+                value: $event->type
+            )->with(['purchasable'])
+            ->first();
 
-        $item = $items->filter(fn(Model $item) =>
-                $item->id === $event->purchasableID
-            )->first();
-
-        if ($items->count() === 1) {
+        if ($cart->items()->count() === 1) {
             $cart->update([
                 'total' => 0,
             ]);
         } else {
             $cart->update([
-                'total' => ($cart->total - $item->purchasable->retail)
+                'total' => ($cart->total - ($item->quantity * $item->purchasable->retail)),
             ]);
         }
-
-
 
         $cart
             ->items()
@@ -74,9 +75,11 @@ class CartProjector extends Projector
     {
         $item = CartItem::query()->where(
             column: 'cart_id',
+            operator: '=',
             value: $event->cartID,
         )->where(
             column: 'id',
+            operator: '=',
             value: $event->cartItemID,
         )->first();
 
@@ -89,9 +92,11 @@ class CartProjector extends Projector
     {
         $item = CartItem::query()->where(
             column: 'cart_id',
+            operator: '=',
             value: $event->cartID,
         )->where(
             column: 'id',
+            operator: '=',
             value: $event->cartItemID,
         )->first();
 
@@ -117,8 +122,9 @@ class CartProjector extends Projector
         $coupon = Coupon::query()->where('code', $event->code)->first();
 
         Cart::query()->where(
-            'id',
-            $event->cartID,
+            column:'id',
+            operator: '=',
+            value: $event->cartID,
         )->update([
             'coupon' => $coupon->code,
             'reduction' => $coupon->reduction,
