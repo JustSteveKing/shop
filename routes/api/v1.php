@@ -57,7 +57,6 @@ Route::prefix('carts')->as('carts:')->group(function () {
      */
     Route::delete('{cart:uuid}/products/{item:uuid}', App\Http\Controllers\Api\V1\Carts\Products\DeleteController::class)->name('products:delete');
 
-
     /**
      * Add a coupon to our cart
      */
