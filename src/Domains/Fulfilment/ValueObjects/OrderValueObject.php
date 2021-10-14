@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Domains\Customer\Events;
+namespace Domains\Fulfilment\ValueObjects;
 
-use Spatie\EventSourcing\StoredEvents\ShouldBeStored;
-
-class OrderWasCreated extends ShouldBeStored
+class OrderValueObject
 {
     public function __construct(
         public string $cart,

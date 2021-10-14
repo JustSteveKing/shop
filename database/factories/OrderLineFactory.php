@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use Domains\Catalog\Models\Variant;
-use Domains\Customer\Models\Order;
-use Domains\Customer\Models\OrderLine;
+use Domains\Fulfilment\Models\Order;
+use Domains\Fulfilment\Models\OrderLine;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderLineFactory extends Factory

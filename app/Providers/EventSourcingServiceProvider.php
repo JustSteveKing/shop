@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use Domains\Customer\Projectors\CartProjector;
-use Domains\Customer\Projectors\OrderProjector;
+use Domains\Fulfilment\Projectors\OrderProjector;
 use Illuminate\Support\ServiceProvider;
 use Spatie\EventSourcing\Facades\Projectionist;
 

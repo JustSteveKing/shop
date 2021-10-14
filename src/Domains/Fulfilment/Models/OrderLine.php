@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Domains\Customer\Models;
+namespace Domains\Fulfilment\Models;
 
 use Database\Factories\OrderLineFactory;
+use Domains\Fulfilment\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

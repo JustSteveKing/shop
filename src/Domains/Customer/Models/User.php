@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domains\Customer\Models;
 
 use Database\Factories\UserFactory;
+use Domains\Fulfilment\Models\Order;
 use Domains\Shared\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

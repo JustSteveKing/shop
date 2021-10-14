@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Domains\Customer\Aggregates\OrderAggregate;
-use Domains\Customer\Events\OrderWasCreated;
+use Domains\Fulfilment\Aggregates\OrderAggregate;
+use Domains\Fulfilment\Events\OrderWasCreated;
 use Domains\Customer\Models\CartItem;
 use Domains\Customer\Models\Location;
 use Domains\Customer\Models\User;
