@@ -84,13 +84,13 @@ class CartProjector extends Projector
         )->first();
 
         $item->update([
-            'quantity' => ($item->quantity + $event->quantity),
+            'quantity' => $item->quantity + $event->quantity,
         ]);
     }
 
     public function onDecreaseCartQuantity(DecreaseCartQuantity $event): void
     {
-        $item = CartItem::query()->where(
+        $item = CartItem::query()->with(['cart'])->where(
             column: 'cart_id',
             operator: '=',
             value: $event->cartID,
@@ -102,12 +102,12 @@ class CartProjector extends Projector
 
         if ($event->quantity >= $item->quantity) {
             CartAggregate::retrieve(
-                uuid: Str::uuid()->toString(),
+                uuid: $item->cart->uuid,
             )->removeProduct(
                 purchasableID: $item->purchasable->id,
-                cartID: $item->cart_id,
+                cartID: $item->cart->id,
                 type: get_class($item->purchasable),
-            );
+            )->persist();
 
             return;
         }
