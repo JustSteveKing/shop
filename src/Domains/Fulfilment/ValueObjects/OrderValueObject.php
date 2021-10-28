@@ -12,5 +12,6 @@ class OrderValueObject
         public int $billing,
         public null|int $user,
         public null|string $email,
+        public null|string $intent,
     ) {}
 }
