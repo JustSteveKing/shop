@@ -24,6 +24,7 @@ it('can create an order from a cart for an unauthenticated user', function (Cart
             'email' => 'juststevemcd@gmail.com',
             'shipping' => $location->id,
             'billing' => $location->id,
+            'intent' => '123456',
         ],
     )->assertStatus(Http::ACCEPTED);
 
@@ -45,6 +46,7 @@ it('can create an order from a cart for an authenticated user', function (CartIt
             'cart' => $cartItem->cart->uuid,
             'shipping' => $location->id,
             'billing' => $location->id,
+            'intent' => '123456',
         ],
     )->assertStatus(Http::ACCEPTED);
 

@@ -36,6 +36,10 @@ class StoreRequest extends FormRequest
                 'int',
                 'exists:locations,id',
             ],
+            'intent' => [
+                'required',
+                'string',
+            ]
         ];
     }
 }
