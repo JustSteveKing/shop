@@ -31,7 +31,7 @@ class SignatureValidationMiddleware
         } catch (UnexpectedValueException $e) {
             abort(Http::UNPROCESSABLE_ENTITY); // Invalid Payload
         } catch (SignatureVerificationException $e) {
-            abort(Http::UNAUTHORIZED);
+            abort(Http::UNAUTHORIZED); //
         }
 
         $request->merge([

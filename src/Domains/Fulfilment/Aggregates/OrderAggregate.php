@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domains\Fulfilment\Aggregates;
 
+use Domains\Fulfilment\Events\OrderStateWasUpdated;
 use Domains\Fulfilment\Events\OrderWasCreated;
 use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
@@ -26,6 +27,18 @@ class OrderAggregate extends AggregateRoot
                 user: $user,
                 email: $email,
                 intent: $intent,
+            ),
+        );
+
+        return $this;
+    }
+
+    public function updateState(int $id, string $state): self
+    {
+        $this->recordThat(
+            domainEvent: new OrderStateWasUpdated(
+                id: $id,
+                state: $state,
             ),
         );
 

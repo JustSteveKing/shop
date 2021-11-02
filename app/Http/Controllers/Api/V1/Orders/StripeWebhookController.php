@@ -14,7 +14,6 @@ class StripeWebhookController extends Controller
 {
     public function __invoke(Request $request)
     {
-        ray($request->all());
         if ($request->get('type') === 'payment_intent.succeeded') {
             ProcessPaymentIntent::dispatch(
                 PaymentIntentFactory::make(
