@@ -6,11 +6,13 @@ namespace Domains\Catalog\Models;
 
 use Database\Factories\ProductFactory;
 use Domains\Catalog\Models\Builders\ProductBuilder;
+use Domains\Customer\Models\Wishlist;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
@@ -60,14 +62,14 @@ class Product extends Model
         );
     }
 
-    public function newEloquentBuilder($query): Builder
+    public function newEloquentBuilder($query): \Domains\Catalog\Models\Builders\ProductBuilder
     {
         return new ProductBuilder(
             query: $query,
         );
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\ProductFactory
     {
         return ProductFactory::new();
     }

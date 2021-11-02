@@ -6,11 +6,13 @@ namespace Domains\Catalog\Models;
 
 use Database\Factories\VariantFactory;
 use Domains\Customer\Models\CartItem;
-use Domains\Customer\Models\OrderLine;
+use Domains\Customer\Models\Wishlist;
+use Domains\Fulfilment\Models\OrderLine;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
@@ -62,7 +64,15 @@ class  Variant extends Model
         );
     }
 
-    protected static function newFactory(): Factory
+    public function wishlists(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            related: Wishlist::class,
+            table: 'variant_wishlist',
+        );
+    }
+
+    protected static function newFactory(): \Database\Factories\VariantFactory
     {
         return VariantFactory::new();
     }

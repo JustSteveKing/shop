@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSnapshotsTable extends Migration
-{
-    public function up()
+return new class() extends Migration {
+    public function up(): void
     {
         Schema::create('snapshots', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -19,4 +18,4 @@ class CreateSnapshotsTable extends Migration
             $table->index('aggregate_uuid');
         });
     }
-}
+};

@@ -39,14 +39,14 @@ class Category extends Model
         );
     }
 
-    public function newEloquentBuilder($query): Builder
+    public function newEloquentBuilder($query): \Domains\Catalog\Models\Builders\CategoryBuilder
     {
         return new CategoryBuilder(
             query: $query,
         );
     }
 
-    protected static function newFactory(): Factory
+    protected static function newFactory(): \Database\Factories\CategoryFactory
     {
         return CategoryFactory::new();
     }

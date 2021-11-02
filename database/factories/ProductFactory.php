@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->words(4, true),
             'description' => $this->faker->paragraphs(2, true),
             'cost' => $cost,
-            'retail' => ($cost * config('shop.profit_margin')),
+            'retail' => (int)($cost * config('shop.profit_margin')),
             'active' => $this->faker->boolean(),
             'vat' => config('shop.vat'),
             'category_id' => Category::factory()->create(),

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domains\Customer\Models;
 
 use Database\Factories\UserFactory;
+use Domains\Fulfilment\Models\Order;
 use Domains\Shared\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -77,7 +78,15 @@ class User extends Authenticatable
         );
     }
 
-    protected static function newFactory(): Factory
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(
+            related: Wishlist::class,
+            foreignKey: 'user_id',
+        );
+    }
+
+    protected static function newFactory(): \Database\Factories\UserFactory
     {
         return UserFactory::new();
     }

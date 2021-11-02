@@ -6,8 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class() extends Migration {
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
@@ -17,6 +16,10 @@ return new class extends Migration
             $table->string('number')->unique();
             $table->string('state');
             $table->string('coupon')->nullable();
+
+            $table->string('intent_id')
+                ->comment('intent ID is the payment intent from stripe.')
+                ->nullable()->unique();
 
             $table->unsignedBigInteger('total')->default(0);
             $table->unsignedBigInteger('reduction')->default(0);

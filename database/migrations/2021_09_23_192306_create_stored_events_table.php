@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStoredEventsTable extends Migration
-{
-    public function up()
+return new class() extends Migration {
+    public function up(): void
     {
         Schema::create('stored_events', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -23,4 +22,4 @@ class CreateStoredEventsTable extends Migration
             $table->unique(['aggregate_uuid', 'aggregate_version']);
         });
     }
-}
+};
