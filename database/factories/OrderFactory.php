@@ -31,7 +31,7 @@ class OrderFactory extends Factory
             'user_id' => User::factory()->create(),
             'shipping_id' => Location::factory()->create(),
             'billing_id' => Location::factory()->create(),
-            'completed_at' => $this->faker->boolean() ? now() : null,
+            'completed_at' => ($state === 'complete') ? now() : null,
             'cancelled_at' => ($state === 'cancelled') ? now() : null,
         ];
     }
